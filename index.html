@@ -621,12 +621,45 @@ No modifiques los datos ni la fórmula de la tabla. Explica con palabras sencill
               </div>
 
               <div class="subpaso">Paso 3 · Generar el diagrama de flujo</div>
-              <pre class="prompt-box prompt-secundario" id="prompt-3c">Genera un DIAGRAMA DE FLUJO como IMAGEN (con Python)
-para explicar la fórmula SI+O de la columna "EJERCICIO 2".
-Incluye ejemplos de la tabla y usa colores para diferenciar
-CUMPLE (azul) y NO CUMPLE (rojo).
+              <pre class="prompt-box prompt-secundario" id="prompt-3c">Genera con Python un DIAGRAMA DE FLUJO PROFESIONAL, CLARO Y FÁCIL DE ENTENDER para explicar la fórmula SI + O de la columna "EJERCICIO 2".
 
-Inserta el diagrama en la hoja de Excel en la celda G20.</pre>
+El diagrama debe representar esta lógica:
+- Evaluar a una persona.
+- Comprobar en una sola decisión: ¿El género es "F" O la edad es mayor o igual a 21?
+- Si al menos una condición es verdadera, el resultado es "CUMPLE".
+- Solamente cuando ambas condiciones son falsas, el resultado es "NO CUMPLE".
+
+Diseño obligatorio:
+- Orientación vertical, de arriba hacia abajo.
+- Utiliza un único rombo central para representar la función O.
+- No coloques dos rombos separados para las condiciones.
+- Flujo simple: INICIO → DECISIÓN → CUMPLE / NO CUMPLE → FIN.
+- Usa flechas rectas, ordenadas y sin cruces.
+- No superpongas textos, figuras ni conectores.
+- Mantén márgenes amplios y alineación centrada.
+- Usa tipografía grande, legible y profesional.
+- Evita emojis, símbolos especiales y caracteres que puedan mostrarse como cuadrados.
+- Fondo blanco y estilo visual limpio.
+
+Colores:
+- INICIO y FIN: gris claro.
+- Decisión: amarillo o naranja suave.
+- CUMPLE: azul.
+- NO CUMPLE: rojo.
+- Flechas y textos: gris oscuro.
+
+Contenido:
+- Coloca como título: "Diagrama de flujo — Función SI + O".
+- Debajo del título muestra la fórmula de forma discreta, sin ocupar demasiado espacio.
+- Añade una nota breve junto al rombo: "Con O, basta con que una condición sea verdadera".
+- Incluye al final solamente 2 ejemplos reales tomados de la tabla:
+  1. Una persona que CUMPLE.
+  2. Una persona que NO CUMPLE.
+- Para cada ejemplo muestra nombre, género, edad y una explicación breve del resultado.
+
+Genera la imagen en alta resolución, con proporción horizontal aproximada de 16:9, para que se lea correctamente dentro de Excel.
+
+Inserta el diagrama terminado en la hoja de Excel, comenzando en la celda G20. Ajusta su tamaño para que sea visible y no cubra la tabla.</pre>
               <div class="acciones">
                 <span class="ayuda">Tercer prompt: genera e inserta el diagrama de flujo en la hoja.</span>
                 <button class="copiar" data-copy="prompt-3c">Copiar prompt</button>
