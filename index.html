@@ -240,11 +240,17 @@
 
 
     .cinta-ejercicios{
+      background:#f3f5f4;
+      border-bottom:1px solid #cfd6dc;
+    }
+
+    .cinta-ejercicios-global{
       position:sticky;
       top:70px;
       z-index:18;
-      background:#f3f5f4;
-      border-bottom:1px solid #cfd6dc;
+      margin-top:0;
+      border-radius:14px 14px 0 0;
+      overflow:hidden;
       box-shadow:0 4px 14px rgba(16,24,40,.06);
     }
 
@@ -356,7 +362,7 @@
     }
 
     @media(max-width:850px){
-      .cinta-ejercicios{
+      .cinta-ejercicios-global{
         top:62px;
       }
     }
@@ -372,14 +378,18 @@
       }
     }
 
+    .cinta-ejercicios-global + .panel-ejercicio .tabs-etapas{
+      margin-top:0;
+    }
+
     .tabs-etapas{
       position:sticky;
-      top:70px;
+      top:124px;
       z-index:15;
       display:flex;
       gap:4px;
       align-items:flex-end;
-      padding:12px 0 0;
+      padding:10px 0 0;
       margin-bottom:26px;
       overflow-x:auto;
       scrollbar-width:thin;
@@ -431,7 +441,7 @@
 
     @media(max-width:850px){
       .tabs-etapas{
-        top:62px;
+        top:116px;
       }
     }
 
@@ -644,19 +654,9 @@
   </header>
 
 
-  <nav class="cinta-ejercicios" aria-label="Navegación principal de ejercicios">
-    <div class="contenedor cinta-ejercicios-interior">
-      <button class="tab-ejercicio activo" type="button" data-ejercicio="1" aria-selected="true">
-        Ejercicio 1
-      </button>
-      <button class="tab-ejercicio" type="button" data-ejercicio="2" aria-selected="false">
-        Ejercicio 2
-      </button>
-    </div>
-  </nav>
+
 
   <main id="inicio">
-    <div class="panel-ejercicio visible" data-ejercicio-panel="1">
     <section class="hero">
       <div class="contenedor">
         <div class="hero-grid">
@@ -688,6 +688,20 @@
       </div>
     </section>
 
+<nav class="cinta-ejercicios cinta-ejercicios-global" aria-label="Navegación principal de ejercicios">
+    <div class="contenedor cinta-ejercicios-interior">
+      <button class="tab-ejercicio activo" type="button" data-ejercicio="1" aria-selected="true">
+        Ejercicio 1
+      </button>
+      <button class="tab-ejercicio" type="button" data-ejercicio="2" aria-selected="false">
+        Ejercicio 2
+      </button>
+    </div>
+  </nav>
+
+    <div class="panel-ejercicio visible" data-ejercicio-panel="1">
+
+
     <section class="seccion">
       <div class="contenedor">
         <div class="encabezado-seccion">
@@ -699,6 +713,8 @@
           </p>
         </div>
 
+
+  
 
         <nav class="tabs-etapas" aria-label="Navegación por etapas">
           <button class="tab-etapa activa" type="button" data-etapa="1" aria-selected="true">Etapa 1</button>
@@ -1048,11 +1064,13 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
       localStorage.setItem("ejercicioSeleccionado", String(numero));
 
       if (desplazar) {
-        const cinta = document.querySelector(".cinta-ejercicios");
-        window.scrollTo({
-          top: cinta.offsetTop - 72,
-          behavior: "smooth"
-        });
+        const cinta = document.querySelector(".cinta-ejercicios-global");
+        if (cinta) {
+          window.scrollTo({
+            top: cinta.offsetTop - 76,
+            behavior: "smooth"
+          });
+        }
       }
     }
 
