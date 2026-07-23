@@ -585,7 +585,8 @@ Inserta el diagrama en la hoja de Excel en la celda G2.</pre>
               <div class="objetivo">Objetivo: comprobar si se cumple al menos una de dos condiciones.</div>
             </div>
             <div class="prompt-area">
-              <pre class="prompt-box" id="prompt-3">En la columna EJERCICIO 2 de la tabla, crea una fórmula que indique "CUMPLE" cuando la persona sea mujer o tenga 21 años o más.
+              <div class="subpaso">Paso 1 · Crear y aplicar la fórmula</div>
+              <pre class="prompt-box" id="prompt-3a">En la columna EJERCICIO 2 de la tabla, crea una fórmula que indique "CUMPLE" cuando la persona sea mujer o tenga 21 años o más.
 
 La fórmula debe combinar las funciones SI y O.
 
@@ -597,15 +598,38 @@ Condiciones:
 
 Escribe la fórmula en la primera fila de datos y aplícala a todas las personas de la tabla.
 
-Después de hacerlo, explícame brevemente:
-1. Qué evalúa la función O.
-2. Por qué basta con que una sola condición sea verdadera.
-3. En qué se diferencia este resultado del obtenido con la función Y.
-
 Utiliza separador de argumentos con punto y coma (;), como se usa habitualmente en Excel en español.</pre>
               <div class="acciones">
-                <span class="ayuda">La función O devuelve VERDADERO cuando al menos una condición se cumple.</span>
-                <button class="copiar" data-copy="prompt-3">Copiar prompt</button>
+                <span class="ayuda">Primer prompt: crea y aplica la fórmula con SI y O.</span>
+                <button class="copiar" data-copy="prompt-3a">Copiar prompt</button>
+              </div>
+
+              <div class="subpaso">Paso 2 · Explicar la fórmula y los resultados</div>
+              <pre class="prompt-box prompt-secundario" id="prompt-3b">Ahora explica brevemente la fórmula creada en la columna EJERCICIO 2.
+
+Incluye:
+1. Qué evalúa la función O.
+2. Por qué basta con que una sola condición sea verdadera.
+3. Qué significa cada argumento de la función SI.
+4. En qué se diferencia este resultado del obtenido con la función Y.
+5. Un ejemplo de una persona que cumple y otra que no cumple.
+
+No modifiques los datos ni la fórmula de la tabla. Explica con palabras sencillas para un alumno principiante.</pre>
+              <div class="acciones">
+                <span class="ayuda">Segundo prompt: solicita la explicación de la fórmula y sus resultados.</span>
+                <button class="copiar" data-copy="prompt-3b">Copiar prompt</button>
+              </div>
+
+              <div class="subpaso">Paso 3 · Generar el diagrama de flujo</div>
+              <pre class="prompt-box prompt-secundario" id="prompt-3c">Genera un DIAGRAMA DE FLUJO como IMAGEN (con Python)
+para explicar la fórmula SI+O de la columna "EJERCICIO 2".
+Incluye ejemplos de la tabla y usa colores para diferenciar
+CUMPLE (azul) y NO CUMPLE (rojo).
+
+Inserta el diagrama en la hoja de Excel en la celda G20.</pre>
+              <div class="acciones">
+                <span class="ayuda">Tercer prompt: genera e inserta el diagrama de flujo en la hoja.</span>
+                <button class="copiar" data-copy="prompt-3c">Copiar prompt</button>
               </div>
             </div>
           </article>
