@@ -238,6 +238,140 @@
       gap:24px;
     }
 
+
+    .cinta-ejercicios{
+      position:sticky;
+      top:70px;
+      z-index:18;
+      background:#f3f5f4;
+      border-bottom:1px solid #cfd6dc;
+      box-shadow:0 4px 14px rgba(16,24,40,.06);
+    }
+
+    .cinta-ejercicios-interior{
+      min-height:54px;
+      display:flex;
+      align-items:flex-end;
+      gap:5px;
+      overflow-x:auto;
+      padding-top:8px;
+      scrollbar-width:thin;
+    }
+
+    .tab-ejercicio{
+      appearance:none;
+      min-width:max-content;
+      border:1px solid #c8d0d6;
+      border-bottom:0;
+      border-radius:10px 10px 0 0;
+      padding:12px 22px 11px;
+      background:#dde3e6;
+      color:#475467;
+      font:900 .92rem Inter, ui-sans-serif, system-ui, sans-serif;
+      cursor:pointer;
+      transition:.2s ease;
+      position:relative;
+      top:1px;
+    }
+
+    .tab-ejercicio:hover{
+      background:#edf1f2;
+      color:var(--verde);
+    }
+
+    .tab-ejercicio.activo{
+      background:#fff;
+      color:var(--verde);
+      border-color:var(--verde);
+      box-shadow:inset 0 4px 0 var(--verde);
+    }
+
+    .panel-ejercicio.oculto{
+      display:none;
+    }
+
+    .panel-ejercicio.visible{
+      display:block;
+      animation:aparecerEjercicio .24s ease;
+    }
+
+    @keyframes aparecerEjercicio{
+      from{opacity:0;transform:translateY(5px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    .ejercicio-vacio{
+      padding:74px 0 100px;
+    }
+
+    .ejercicio-vacio-card{
+      max-width:850px;
+      margin:0 auto;
+      padding:42px;
+      text-align:center;
+      border:1px solid rgba(16,24,40,.10);
+      border-radius:26px;
+      background:#fff;
+      box-shadow:var(--sombra);
+    }
+
+    .ejercicio-vacio-numero{
+      display:inline-grid;
+      place-items:center;
+      width:62px;
+      height:62px;
+      margin-bottom:18px;
+      border-radius:18px;
+      color:#fff;
+      background:linear-gradient(145deg,var(--verde),var(--verde-oscuro));
+      font-size:1.5rem;
+      font-weight:900;
+    }
+
+    .ejercicio-vacio-card h2{
+      margin:0;
+      font-size:clamp(2rem,4vw,3.4rem);
+      line-height:1.08;
+      letter-spacing:-.045em;
+    }
+
+    .ejercicio-vacio-card p{
+      max-width:660px;
+      margin:17px auto 0;
+      color:var(--gris);
+      font-size:1.05rem;
+    }
+
+    .ejercicio-vacio-etiqueta{
+      display:inline-block;
+      margin-top:24px;
+      padding:9px 14px;
+      border-radius:999px;
+      color:var(--verde);
+      background:var(--verde-claro);
+      font-size:.8rem;
+      font-weight:900;
+      letter-spacing:.06em;
+      text-transform:uppercase;
+    }
+
+    @media(max-width:850px){
+      .cinta-ejercicios{
+        top:62px;
+      }
+    }
+
+    @media(max-width:560px){
+      .tab-ejercicio{
+        padding:10px 16px 9px;
+        font-size:.86rem;
+      }
+
+      .ejercicio-vacio-card{
+        padding:30px 22px;
+      }
+    }
+
     .tabs-etapas{
       position:sticky;
       top:70px;
@@ -509,7 +643,20 @@
     </div>
   </header>
 
+
+  <nav class="cinta-ejercicios" aria-label="Navegación principal de ejercicios">
+    <div class="contenedor cinta-ejercicios-interior">
+      <button class="tab-ejercicio activo" type="button" data-ejercicio="1" aria-selected="true">
+        Ejercicio 1
+      </button>
+      <button class="tab-ejercicio" type="button" data-ejercicio="2" aria-selected="false">
+        Ejercicio 2
+      </button>
+    </div>
+  </nav>
+
   <main id="inicio">
+    <div class="panel-ejercicio visible" data-ejercicio-panel="1">
     <section class="hero">
       <div class="contenedor">
         <div class="hero-grid">
@@ -823,6 +970,25 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
         </div>
       </div>
     </section>
+
+    </div>
+
+    <div class="panel-ejercicio oculto" data-ejercicio-panel="2">
+      <section class="ejercicio-vacio">
+        <div class="contenedor">
+          <div class="ejercicio-vacio-card">
+            <div class="ejercicio-vacio-numero">2</div>
+            <h2>Ejercicio 2</h2>
+            <p>
+              Este será un ejercicio independiente con la misma temática:
+              aprender a redactar buenos prompts, interpretar correctamente las
+              instrucciones y comprobar lo que realiza la Inteligencia Artificial en Excel.
+            </p>
+            <span class="ejercicio-vacio-etiqueta">Contenido en construcción</span>
+          </div>
+        </div>
+      </section>
+    </div>
   </main>
 
   <footer>
@@ -861,6 +1027,46 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
         }, 1800);
       });
     });
+
+
+    const tabsEjercicios = document.querySelectorAll(".tab-ejercicio");
+    const panelesEjercicios = document.querySelectorAll("[data-ejercicio-panel]");
+
+    function mostrarEjercicio(numero, desplazar = true){
+      tabsEjercicios.forEach((tab) => {
+        const activo = tab.dataset.ejercicio === String(numero);
+        tab.classList.toggle("activo", activo);
+        tab.setAttribute("aria-selected", activo ? "true" : "false");
+      });
+
+      panelesEjercicios.forEach((panel) => {
+        const visible = panel.dataset.ejercicioPanel === String(numero);
+        panel.classList.toggle("visible", visible);
+        panel.classList.toggle("oculto", !visible);
+      });
+
+      localStorage.setItem("ejercicioSeleccionado", String(numero));
+
+      if (desplazar) {
+        const cinta = document.querySelector(".cinta-ejercicios");
+        window.scrollTo({
+          top: cinta.offsetTop - 72,
+          behavior: "smooth"
+        });
+      }
+    }
+
+    tabsEjercicios.forEach((tab) => {
+      tab.addEventListener("click", () => mostrarEjercicio(tab.dataset.ejercicio));
+    });
+
+    const ejercicioGuardado = localStorage.getItem("ejercicioSeleccionado");
+    if (
+      ejercicioGuardado &&
+      document.querySelector(`[data-ejercicio-panel="${ejercicioGuardado}"]`)
+    ) {
+      mostrarEjercicio(ejercicioGuardado, false);
+    }
 
     const tabsEtapas = document.querySelectorAll(".tab-etapa");
     const panelesEtapas = document.querySelectorAll("[data-etapa-panel]");
