@@ -990,17 +990,107 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
     </div>
 
     <div class="panel-ejercicio oculto" data-ejercicio-panel="2">
-      <section class="ejercicio-vacio">
+      <section class="seccion">
         <div class="contenedor">
-          <div class="ejercicio-vacio-card">
-            <div class="ejercicio-vacio-numero">2</div>
-            <h2>Ejercicio 2</h2>
+          <div class="encabezado-seccion">
+            <div class="eyebrow">Ejercicio 2</div>
+            <h2>Clasificación del estado de facturas</h2>
             <p>
-              Este será un ejercicio independiente con la misma temática:
-              aprender a redactar buenos prompts, interpretar correctamente las
-              instrucciones y comprobar lo que realiza la Inteligencia Artificial en Excel.
+              En este ejercicio aprenderás a construir una tabla base y a redactar
+              prompts claros para que la IA aplique correctamente una función SI anidada.
             </p>
-            <span class="ejercicio-vacio-etiqueta">Contenido en construcción</span>
+          </div>
+
+          <nav class="tabs-etapas tabs-etapas-ejercicio-2" aria-label="Navegación por etapas del Ejercicio 2">
+            <button class="tab-etapa activa" type="button" data-ejercicio-etapa="2-1" aria-selected="true">Etapa 1</button>
+            <button class="tab-etapa" type="button" data-ejercicio-etapa="2-2" aria-selected="false">Etapa 2</button>
+            <button class="tab-etapa" type="button" data-ejercicio-etapa="2-3" aria-selected="false">Etapa 3</button>
+            <button class="tab-etapa" type="button" data-ejercicio-etapa="2-4" aria-selected="false">Etapa 4</button>
+          </nav>
+
+          <div class="etapas">
+            <article class="etapa visible" data-ejercicio-etapa-panel="2-1">
+              <div class="etapa-cabecera">
+                <span class="estado">Etapa 01</span>
+                <h3>Crear el listado base para la práctica</h3>
+                <div class="objetivo">
+                  Objetivo: preparar registros variados de facturas y dejar la columna ESTADO lista para trabajar posteriormente.
+                </div>
+              </div>
+
+              <div class="prompt-area">
+                <pre class="prompt-box" id="prompt-2-e1">Crea en la hoja activa de Excel una actividad para practicar la función SI anidada.
+
+En la fila 1 escribe exactamente esta instrucción:
+
+1 - Si la factura está en blanco, indicar "SIN FACTURA"; si está pendiente de pago, indicar "PENDIENTE"; y si está pagada, indicar "PAGADA".
+
+Deja las filas 2 y 3 completamente en blanco.
+
+En la fila 4 crea los siguientes encabezados, respetando exactamente los nombres y el orden:
+
+FACTURA | IMPORTE | ¿PAGADA? | ESTADO
+
+Desde la fila 5 genera un listado ficticio de 12 registros.
+
+Para la columna FACTURA:
+- Utiliza números de factura con el formato 001-001-0000000.
+- Deja algunas celdas de esta columna en blanco para representar registros sin factura.
+
+Para la columna IMPORTE:
+- Genera valores variados entre 250.000 y 900.000.
+- Utiliza números enteros con separador de miles.
+
+Para la columna ¿PAGADA?:
+- Escribe X en algunos registros para indicar que la factura fue pagada.
+- Deja otras celdas en blanco para indicar que está pendiente.
+- Incluye registros con factura y sin factura.
+
+Deja completamente vacía la columna ESTADO, porque será completada posteriormente con una fórmula.
+
+Organiza los datos de manera que existan los tres casos posibles:
+- Registros sin número de factura.
+- Facturas pendientes de pago.
+- Facturas pagadas.
+
+Convierte el rango en una tabla de Excel con filtros y aplica un formato limpio y profesional, similar al estilo verde de Excel.
+
+No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
+
+                <div class="acciones">
+                  <span class="ayuda">Copiá este prompt y pegalo en el asistente de IA de Excel.</span>
+                  <button class="copiar" data-copy="prompt-2-e1">Copiar prompt</button>
+                </div>
+
+                <div class="nota">
+                  En esta etapa solo se crea el listado base. La columna ESTADO debe quedar vacía para trabajar la fórmula en la siguiente etapa.
+                </div>
+              </div>
+            </article>
+
+            <article class="etapa oculta" data-ejercicio-etapa-panel="2-2">
+              <div class="etapa-cabecera">
+                <span class="estado">Etapa 02</span>
+                <h3>Próxima etapa</h3>
+                <div class="objetivo">Contenido pendiente de definir.</div>
+              </div>
+            </article>
+
+            <article class="etapa oculta" data-ejercicio-etapa-panel="2-3">
+              <div class="etapa-cabecera">
+                <span class="estado">Etapa 03</span>
+                <h3>Próxima etapa</h3>
+                <div class="objetivo">Contenido pendiente de definir.</div>
+              </div>
+            </article>
+
+            <article class="etapa oculta" data-ejercicio-etapa-panel="2-4">
+              <div class="etapa-cabecera">
+                <span class="estado">Etapa 04</span>
+                <h3>Próxima etapa</h3>
+                <div class="objetivo">Contenido pendiente de definir.</div>
+              </div>
+            </article>
           </div>
         </div>
       </section>
@@ -1086,10 +1176,12 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
       mostrarEjercicio(ejercicioGuardado, false);
     }
 
-    const tabsEtapas = document.querySelectorAll(".tab-etapa");
-    const panelesEtapas = document.querySelectorAll("[data-etapa-panel]");
+    // Navegación exclusiva de las etapas del Ejercicio 1.
+    // El selector usa data-etapa para no interferir con las pestañas del Ejercicio 2.
+    const tabsEtapas = document.querySelectorAll('.tab-etapa[data-etapa]');
+    const panelesEtapas = document.querySelectorAll('[data-etapa-panel]');
 
-    function mostrarEtapa(numero){
+    function mostrarEtapa(numero, desplazar = true){
       tabsEtapas.forEach((tab) => {
         const activa = tab.dataset.etapa === String(numero);
         tab.classList.toggle("activa", activa);
@@ -1103,7 +1195,19 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
       });
 
       localStorage.setItem("etapaSeleccionada", String(numero));
-      window.scrollTo({ top: document.querySelector(".tabs-etapas").offsetTop - 76, behavior: "smooth" });
+
+      if (desplazar) {
+        const tabsEjercicio1 = document.querySelector(
+          '[data-ejercicio-panel="1"] .tabs-etapas'
+        );
+
+        if (tabsEjercicio1) {
+          window.scrollTo({
+            top: tabsEjercicio1.offsetTop - 76,
+            behavior: "smooth"
+          });
+        }
+      }
     }
 
     tabsEtapas.forEach((tab) => {
@@ -1111,8 +1215,43 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
     });
 
     const etapaGuardada = localStorage.getItem("etapaSeleccionada");
-    if (etapaGuardada && document.querySelector(`[data-etapa-panel="${etapaGuardada}"]`)) {
-      mostrarEtapa(etapaGuardada);
+    if (
+      etapaGuardada &&
+      document.querySelector(`[data-etapa-panel="${etapaGuardada}"]`)
+    ) {
+      mostrarEtapa(etapaGuardada, false);
+    }
+
+
+    const tabsEtapasEjercicio2 = document.querySelectorAll("[data-ejercicio-etapa]");
+    const panelesEtapasEjercicio2 = document.querySelectorAll("[data-ejercicio-etapa-panel]");
+
+    function mostrarEtapaEjercicio2(idEtapa){
+      tabsEtapasEjercicio2.forEach((tab) => {
+        const activa = tab.dataset.ejercicioEtapa === idEtapa;
+        tab.classList.toggle("activa", activa);
+        tab.setAttribute("aria-selected", activa ? "true" : "false");
+      });
+
+      panelesEtapasEjercicio2.forEach((panel) => {
+        const visible = panel.dataset.ejercicioEtapaPanel === idEtapa;
+        panel.classList.toggle("visible", visible);
+        panel.classList.toggle("oculta", !visible);
+      });
+
+      localStorage.setItem("etapaEjercicio2Seleccionada", idEtapa);
+    }
+
+    tabsEtapasEjercicio2.forEach((tab) => {
+      tab.addEventListener("click", () => mostrarEtapaEjercicio2(tab.dataset.ejercicioEtapa));
+    });
+
+    const etapaEjercicio2Guardada = localStorage.getItem("etapaEjercicio2Seleccionada");
+    if (
+      etapaEjercicio2Guardada &&
+      document.querySelector(`[data-ejercicio-etapa-panel="${etapaEjercicio2Guardada}"]`)
+    ) {
+      mostrarEtapaEjercicio2(etapaEjercicio2Guardada);
     }
 
   </script>
