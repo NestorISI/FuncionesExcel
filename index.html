@@ -289,8 +289,21 @@
       padding:18px 24px 22px;
     }
 
+    .subpaso{
+      margin:14px 0 7px;
+      color:var(--verde);
+      font-size:.82rem;
+      font-weight:900;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+
+    .subpaso:first-child{
+      margin-top:0;
+    }
+
     .prompt-secundario{
-      margin-top:14px;
+      margin-top:0;
     }
 
     .prompt-box{
@@ -517,6 +530,7 @@ Convierte el rango en una Tabla de Excel con filtros y aplica un formato limpio 
               <div class="objetivo">Objetivo: comprobar que se cumplan dos condiciones al mismo tiempo.</div>
             </div>
             <div class="prompt-area">
+              <div class="subpaso">Paso 1 · Crear y aplicar la fórmula</div>
               <pre class="prompt-box" id="prompt-2a">En la columna EJERCICIO 1 de la tabla, crea una fórmula que indique "CUMPLE" solamente cuando la persona sea mujer y tenga 21 años o más.
 
 La fórmula debe combinar las funciones SI e Y.
@@ -535,6 +549,7 @@ Utiliza separador de argumentos con punto y coma (;), como se usa habitualmente 
                 <button class="copiar" data-copy="prompt-2a">Copiar prompt</button>
               </div>
 
+              <div class="subpaso">Paso 2 · Explicar la fórmula y los resultados</div>
               <pre class="prompt-box prompt-secundario" id="prompt-2b">Ahora explica brevemente la fórmula creada en la columna EJERCICIO 1.
 
 Incluye:
@@ -548,7 +563,19 @@ No modifiques los datos ni la fórmula de la tabla. Explica con palabras sencill
                 <span class="ayuda">Segundo prompt: solicita la explicación de la fórmula y sus resultados.</span>
                 <button class="copiar" data-copy="prompt-2b">Copiar prompt</button>
               </div>
-            </div>
+
+              <div class="subpaso">Paso 3 · Generar el diagrama de flujo</div>
+              <pre class="prompt-box prompt-secundario" id="prompt-2c">Genera un DIAGRAMA DE FLUJO como IMAGEN (con Python)
+para explicar la fórmula SI+Y de la columna "EJERCICIO 1".
+Incluye ejemplos de la tabla y usa colores para diferenciar
+CUMPLE (azul) y NO CUMPLE (rojo).
+
+Inserta el diagrama en la hoja de Excel en la celda G2.</pre>
+              <div class="acciones">
+                <span class="ayuda">Tercer prompt: genera e inserta el diagrama de flujo en la hoja.</span>
+                <button class="copiar" data-copy="prompt-2c">Copiar prompt</button>
+              </div>
+</div>
           </article>
 
           <article class="etapa">
