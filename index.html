@@ -382,6 +382,10 @@
       margin-top:0;
     }
 
+    .tabs-etapas-ejercicio-2{
+      margin-top:0;
+    }
+
     .tabs-etapas{
       position:sticky;
       top:124px;
@@ -1138,6 +1142,27 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
     const tabsEjercicios = document.querySelectorAll(".tab-ejercicio");
     const panelesEjercicios = document.querySelectorAll("[data-ejercicio-panel]");
 
+    function alinearNavegacionDelEjercicio(numero, comportamiento = "smooth"){
+      const pestañasEtapas = document.querySelector(
+        `[data-ejercicio-panel="${numero}"] .tabs-etapas`
+      );
+
+      if (!pestañasEtapas) return;
+
+      // Espera a que el panel seleccionado sea visible y tenga su posición definitiva.
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          const posicionDocumento =
+            pestañasEtapas.getBoundingClientRect().top + window.scrollY;
+
+          window.scrollTo({
+            top: Math.max(0, posicionDocumento - 76),
+            behavior: comportamiento
+          });
+        });
+      });
+    }
+
     function mostrarEjercicio(numero, desplazar = true){
       tabsEjercicios.forEach((tab) => {
         const activo = tab.dataset.ejercicio === String(numero);
@@ -1154,13 +1179,7 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
       localStorage.setItem("ejercicioSeleccionado", String(numero));
 
       if (desplazar) {
-        const cinta = document.querySelector(".cinta-ejercicios-global");
-        if (cinta) {
-          window.scrollTo({
-            top: cinta.offsetTop - 76,
-            behavior: "smooth"
-          });
-        }
+        alinearNavegacionDelEjercicio(numero);
       }
     }
 
@@ -1197,16 +1216,7 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
       localStorage.setItem("etapaSeleccionada", String(numero));
 
       if (desplazar) {
-        const tabsEjercicio1 = document.querySelector(
-          '[data-ejercicio-panel="1"] .tabs-etapas'
-        );
-
-        if (tabsEjercicio1) {
-          window.scrollTo({
-            top: tabsEjercicio1.offsetTop - 76,
-            behavior: "smooth"
-          });
-        }
+        alinearNavegacionDelEjercicio("1");
       }
     }
 
@@ -1226,7 +1236,7 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
     const tabsEtapasEjercicio2 = document.querySelectorAll("[data-ejercicio-etapa]");
     const panelesEtapasEjercicio2 = document.querySelectorAll("[data-ejercicio-etapa-panel]");
 
-    function mostrarEtapaEjercicio2(idEtapa){
+    function mostrarEtapaEjercicio2(idEtapa, desplazar = true){
       tabsEtapasEjercicio2.forEach((tab) => {
         const activa = tab.dataset.ejercicioEtapa === idEtapa;
         tab.classList.toggle("activa", activa);
@@ -1240,6 +1250,10 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
       });
 
       localStorage.setItem("etapaEjercicio2Seleccionada", idEtapa);
+
+      if (desplazar) {
+        alinearNavegacionDelEjercicio("2");
+      }
     }
 
     tabsEtapasEjercicio2.forEach((tab) => {
@@ -1251,7 +1265,7 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
       etapaEjercicio2Guardada &&
       document.querySelector(`[data-ejercicio-etapa-panel="${etapaEjercicio2Guardada}"]`)
     ) {
-      mostrarEtapaEjercicio2(etapaEjercicio2Guardada);
+      mostrarEtapaEjercicio2(etapaEjercicio2Guardada, false);
     }
 
   </script>
