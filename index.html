@@ -1009,7 +1009,6 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
             <button class="tab-etapa activa" type="button" data-ejercicio-etapa="2-1" aria-selected="true">Etapa 1</button>
             <button class="tab-etapa" type="button" data-ejercicio-etapa="2-2" aria-selected="false">Etapa 2</button>
             <button class="tab-etapa" type="button" data-ejercicio-etapa="2-3" aria-selected="false">Etapa 3</button>
-            <button class="tab-etapa" type="button" data-ejercicio-etapa="2-4" aria-selected="false">Etapa 4</button>
           </nav>
 
           <div class="etapas">
@@ -1206,16 +1205,57 @@ Inserta el diagrama terminado en la hoja de Excel, comenzando en la celda G2. Aj
             <article class="etapa oculta" data-ejercicio-etapa-panel="2-3">
               <div class="etapa-cabecera">
                 <span class="estado">Etapa 03</span>
-                <h3>Próxima etapa</h3>
-                <div class="objetivo">Contenido pendiente de definir.</div>
+                <h3>Comparar y comprender la fórmula SI anidada</h3>
+                <div class="objetivo">Objetivo: interpretar la lógica aplicada y no limitarse a copiar la fórmula.</div>
               </div>
-            </article>
+              <div class="prompt-area">
+                <pre class="prompt-box" id="prompt-2-e3">Analiza los resultados de la columna ESTADO y crea una explicación visual, clara y fácil de interpretar para un alumno principiante.
 
-            <article class="etapa oculta" data-ejercicio-etapa-panel="2-4">
-              <div class="etapa-cabecera">
-                <span class="estado">Etapa 04</span>
-                <h3>Próxima etapa</h3>
-                <div class="objetivo">Contenido pendiente de definir.</div>
+Primero, selecciona cuatro ejemplos reales de la tabla:
+- Un registro sin número de factura.
+- Una factura con número y con "X" en la columna ¿PAGADA?.
+- Una factura con número y sin "X" en la columna ¿PAGADA?.
+- Un registro sin número de factura pero con "X" en la columna ¿PAGADA?.
+
+Para cada ejemplo, indica:
+- Número de factura (o celda vacía).
+- Importe.
+- Contenido de la columna ¿PAGADA?.
+- Resultado en la columna ESTADO.
+- Una explicación breve de por qué se obtuvo ese resultado.
+
+Luego muestra la fórmula utilizada y explícala parte por parte con palabras sencillas: qué evalúa el primer SI, qué evalúa el segundo SI y en qué orden se comprueban las condiciones.
+
+Después crea un RESUMEN VISUAL de la lógica de la SI anidada, similar a una tabla de verdad, utilizando símbolos fáciles de reconocer:
+
+- Usa ✅ para VERDADERO.
+- Usa ❌ para FALSO.
+- Muestra todas las combinaciones posibles de las dos condiciones.
+
+El resumen visual debe verse así en concepto:
+
+CONDICIÓN 1: ¿La celda FACTURA está vacía?
+CONDICIÓN 2: ¿La columna ¿PAGADA? contiene "X"?
+
+✅ + ✅ = SIN FACTURA
+✅ + ❌ = SIN FACTURA
+❌ + ✅ = PAGADA
+❌ + ❌ = PENDIENTE
+
+Presenta las cuatro combinaciones dentro de un bloque visual limpio, ordenado y fácil de comparar. Resalta que cuando la CONDICIÓN 1 es verdadera el resultado siempre es "SIN FACTURA", porque la fórmula deja de evaluar el resto.
+
+Añade debajo una conclusión visual breve:
+- SI anidada: las condiciones se evalúan una detrás de otra, en orden.
+- La primera condición que se cumple decide el resultado final.
+- Si se cambiara el orden, una factura vacía marcada con "X" aparecería como "PAGADA", lo cual sería un error.
+
+Usa títulos claros, buena separación entre secciones y formato visual con emojis o símbolos, evitando párrafos largos.
+
+No modifiques los datos ni la fórmula de la tabla durante la explicación.</pre>
+                <div class="acciones">
+                  <span class="ayuda">Usá este último prompt para reforzar la interpretación de los resultados.</span>
+                  <button class="copiar" data-copy="prompt-2-e3">Copiar prompt</button>
+                </div>
               </div>
             </article>
           </div>
