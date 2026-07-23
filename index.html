@@ -188,30 +188,6 @@
 
     .formula-linea strong{color:var(--verde)}
 
-    .recorrido{
-      margin-top:44px;
-      display:grid;
-      grid-template-columns:repeat(4,1fr);
-      gap:12px;
-    }
-
-    .paso-mini{
-      padding:16px;
-      border-radius:16px;
-      background:#fff;
-      border:1px solid rgba(16,24,40,.08);
-      font-size:.86rem;
-      font-weight:800;
-    }
-
-    .paso-mini b{
-      display:block;
-      margin-bottom:3px;
-      color:var(--verde);
-      font-size:.75rem;
-      letter-spacing:.06em;
-    }
-
     .seccion{
       padding:26px 0 82px;
     }
@@ -626,7 +602,6 @@
     @media(max-width:850px){
       .hero-grid{grid-template-columns:1fr}
       .hero-card{max-width:680px}
-      .recorrido{grid-template-columns:repeat(2,1fr)}
       .aprendizaje{grid-template-columns:1fr}
     }
 
@@ -634,7 +609,6 @@
       .barra-interior{min-height:62px}
       .etiqueta-superior{display:none}
       .hero{padding:58px 0 42px}
-      .recorrido{grid-template-columns:1fr}
       .etapa-cabecera,.prompt-area{padding-left:20px;padding-right:20px}
       .prompt-box{padding:14px 16px;font-size:.88rem;line-height:1.1}
       .acciones{align-items:stretch}
@@ -681,13 +655,6 @@
               <div class="formula-linea"><strong>O</strong>(Género="F"; Edad&gt;=21)</div>
             </div>
           </aside>
-        </div>
-
-        <div class="recorrido" aria-label="Recorrido de la serie">
-          <div class="paso-mini"><b>01</b>Crear el listado</div>
-          <div class="paso-mini"><b>02</b>Aplicar SI + Y</div>
-          <div class="paso-mini"><b>03</b>Aplicar SI + O</div>
-          <div class="paso-mini"><b>04</b>Explicar resultados</div>
         </div>
       </div>
     </section>
