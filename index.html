@@ -289,6 +289,10 @@
       padding:18px 24px 22px;
     }
 
+    .prompt-secundario{
+      margin-top:14px;
+    }
+
     .prompt-box{
       position:relative;
       margin:0;
@@ -513,7 +517,7 @@ Convierte el rango en una Tabla de Excel con filtros y aplica un formato limpio 
               <div class="objetivo">Objetivo: comprobar que se cumplan dos condiciones al mismo tiempo.</div>
             </div>
             <div class="prompt-area">
-              <pre class="prompt-box" id="prompt-2">En la columna EJERCICIO 1 de la tabla, crea una fórmula que indique "CUMPLE" solamente cuando la persona sea mujer y tenga 21 años o más.
+              <pre class="prompt-box" id="prompt-2a">En la columna EJERCICIO 1 de la tabla, crea una fórmula que indique "CUMPLE" solamente cuando la persona sea mujer y tenga 21 años o más.
 
 La fórmula debe combinar las funciones SI e Y.
 
@@ -525,15 +529,24 @@ Condiciones:
 
 Escribe la fórmula en la primera fila de datos y aplícala a todas las personas de la tabla.
 
-Después de hacerlo, explícame brevemente:
+Utiliza separador de argumentos con punto y coma (;), como se usa habitualmente en Excel en español.</pre>
+              <div class="acciones">
+                <span class="ayuda">Primer prompt: crea y aplica la fórmula con SI e Y.</span>
+                <button class="copiar" data-copy="prompt-2a">Copiar prompt</button>
+              </div>
+
+              <pre class="prompt-box prompt-secundario" id="prompt-2b">Ahora explica brevemente la fórmula creada en la columna EJERCICIO 1.
+
+Incluye:
 1. Qué evalúa la función Y.
 2. Por qué deben cumplirse las dos condiciones.
 3. Qué significa cada argumento de la función SI.
+4. Un ejemplo de una persona que cumple y otra que no cumple.
 
-Utiliza separador de argumentos con punto y coma (;), como se usa habitualmente en Excel en español.</pre>
+No modifiques los datos ni la fórmula de la tabla. Explica con palabras sencillas para un alumno principiante.</pre>
               <div class="acciones">
-                <span class="ayuda">La función Y devuelve VERDADERO únicamente cuando todas las condiciones se cumplen.</span>
-                <button class="copiar" data-copy="prompt-2">Copiar prompt</button>
+                <span class="ayuda">Segundo prompt: solicita la explicación de la fórmula y sus resultados.</span>
+                <button class="copiar" data-copy="prompt-2b">Copiar prompt</button>
               </div>
             </div>
           </article>
