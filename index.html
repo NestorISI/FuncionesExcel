@@ -1075,8 +1075,131 @@ No escribas todavía ninguna fórmula en la columna ESTADO.</pre>
             <article class="etapa oculta" data-ejercicio-etapa-panel="2-2">
               <div class="etapa-cabecera">
                 <span class="estado">Etapa 02</span>
-                <h3>Próxima etapa</h3>
-                <div class="objetivo">Contenido pendiente de definir.</div>
+                <h3>Crear, aplicar y comprender la fórmula SI anidada</h3>
+                <div class="objetivo">
+                  Objetivo: completar la columna ESTADO, comprender el orden de las condiciones y representar visualmente la lógica de la fórmula.
+                </div>
+              </div>
+
+              <div class="prompt-area">
+                <div class="subpaso">Paso 1 · Crear y aplicar la fórmula</div>
+                <pre class="prompt-box" id="prompt-2-e2-p1">Completa la columna "ESTADO" de la tabla utilizando una fórmula SI anidada.
+
+La fórmula debe evaluar las condiciones en este orden:
+
+1. Primero comprueba si la celda de la columna "FACTURA" está vacía.
+   - Si está vacía, debe mostrar "SIN FACTURA".
+
+2. Si la factura no está vacía, comprueba la columna "¿PAGADA?".
+   - Si contiene la letra "X", debe mostrar "PAGADA".
+   - Si no contiene "X" o está vacía, debe mostrar "PENDIENTE".
+
+Escribe la fórmula en la primera fila de datos de la columna "ESTADO" y aplícala a todos los registros de la tabla.
+
+Usa referencias estructuradas de la tabla de Excel siempre que sea posible.
+
+Utiliza funciones de Excel en español y el punto y coma (;) como separador de argumentos.
+
+No cambies los datos existentes, los encabezados ni el formato de la tabla.</pre>
+
+                <div class="acciones">
+                  <span class="ayuda">Primer prompt: crea y aplica la fórmula SI anidada en la columna ESTADO.</span>
+                  <button class="copiar" data-copy="prompt-2-e2-p1">Copiar prompt</button>
+                </div>
+
+                <div class="subpaso">Paso 2 · Explicar la fórmula y los resultados</div>
+                <pre class="prompt-box prompt-secundario" id="prompt-2-e2-p2">Ahora explica de manera clara y sencilla la fórmula SI anidada creada en la columna "ESTADO".
+
+La explicación debe incluir:
+
+1. La fórmula completa utilizada.
+2. Qué comprueba el primer SI.
+3. Por qué se debe comprobar primero si existe un número de factura.
+4. Qué comprueba el segundo SI.
+5. Cómo se obtiene cada uno de estos resultados:
+   - "SIN FACTURA"
+   - "PENDIENTE"
+   - "PAGADA"
+6. Qué ocurriría si se cambiara el orden de las condiciones.
+
+Después selecciona tres registros reales de la tabla:
+- Un registro con resultado "SIN FACTURA".
+- Un registro con resultado "PENDIENTE".
+- Un registro con resultado "PAGADA".
+
+Para cada ejemplo muestra:
+- Número de factura o celda vacía.
+- Importe.
+- Contenido de la columna "¿PAGADA?".
+- Resultado en la columna "ESTADO".
+- Explicación breve del resultado.
+
+Usa títulos, bloques cortos y un formato visual fácil de leer para un alumno principiante.
+
+No modifiques los datos ni las fórmulas de la tabla.</pre>
+
+                <div class="acciones">
+                  <span class="ayuda">Segundo prompt: explica la fórmula, el orden de evaluación y los tres resultados posibles.</span>
+                  <button class="copiar" data-copy="prompt-2-e2-p2">Copiar prompt</button>
+                </div>
+
+                <div class="subpaso">Paso 3 · Generar el diagrama de flujo</div>
+                <pre class="prompt-box prompt-secundario" id="prompt-2-e2-p3">Genera con Python un DIAGRAMA DE FLUJO PROFESIONAL, CLARO Y FÁCIL DE ENTENDER para explicar la fórmula SI anidada de la columna "ESTADO".
+
+El diagrama debe representar exactamente esta lógica:
+
+INICIO
+↓
+¿La celda de "FACTURA" está vacía?
+
+- SÍ → resultado "SIN FACTURA" → FIN.
+- NO → continuar con la segunda decisión:
+
+¿La columna "¿PAGADA?" contiene la letra "X"?
+
+- SÍ → resultado "PAGADA" → FIN.
+- NO → resultado "PENDIENTE" → FIN.
+
+Diseño obligatorio:
+- Orientación vertical, de arriba hacia abajo.
+- Usa dos rombos de decisión, uno debajo del otro.
+- El primer rombo debe evaluar si la factura está vacía.
+- El segundo rombo debe evaluar si "¿PAGADA?" contiene "X".
+- Identifica claramente las salidas "SÍ" y "NO".
+- Usa flechas rectas, ordenadas y sin cruces.
+- No superpongas textos, figuras ni conectores.
+- Mantén márgenes amplios y una alineación limpia.
+- Usa tipografía grande, legible y profesional.
+- Fondo blanco y estilo visual sobrio.
+- Evita emojis, caracteres decorativos y símbolos que puedan mostrarse como cuadrados.
+
+Colores:
+- INICIO y FIN: gris claro.
+- Decisiones: amarillo suave.
+- SIN FACTURA: gris azulado.
+- PENDIENTE: naranja.
+- PAGADA: azul o verde.
+- Flechas y textos: gris oscuro.
+
+Contenido adicional:
+- Coloca como título: "Diagrama de flujo — Estado de facturas con SI anidada".
+- Debajo del título muestra la fórmula utilizada de forma discreta.
+- Añade una nota breve: "El orden de las condiciones es importante: primero se comprueba si existe la factura".
+- Incluye al final tres ejemplos reales tomados de la tabla, uno por cada resultado.
+- En cada ejemplo muestra factura, valor de "¿PAGADA?" y estado obtenido.
+
+Genera la imagen en alta resolución y con una proporción horizontal aproximada de 16:9.
+
+Inserta el diagrama terminado en la hoja de Excel, comenzando en la celda G2. Ajusta su tamaño para que sea legible y no cubra la tabla.</pre>
+
+                <div class="acciones">
+                  <span class="ayuda">Tercer prompt: genera un diagrama profesional con las dos decisiones de la fórmula.</span>
+                  <button class="copiar" data-copy="prompt-2-e2-p3">Copiar prompt</button>
+                </div>
+
+                <div class="nota">
+                  En esta etapa el alumno aplica la fórmula, comprende por qué las condiciones deben evaluarse en ese orden y representa la lógica mediante un diagrama de flujo.
+                </div>
               </div>
             </article>
 
