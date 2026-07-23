@@ -238,6 +238,76 @@
       gap:24px;
     }
 
+    .tabs-etapas{
+      position:sticky;
+      top:70px;
+      z-index:15;
+      display:flex;
+      gap:4px;
+      align-items:flex-end;
+      padding:12px 0 0;
+      margin-bottom:26px;
+      overflow-x:auto;
+      scrollbar-width:thin;
+      background:linear-gradient(to bottom, rgba(247,249,248,.96), rgba(247,249,248,.96));
+      border-bottom:1px solid #cfd6dc;
+    }
+
+    .tab-etapa{
+      appearance:none;
+      border:1px solid #cfd6dc;
+      border-bottom:0;
+      border-radius:9px 9px 0 0;
+      padding:11px 18px 10px;
+      min-width:max-content;
+      background:#e9edf0;
+      color:#475467;
+      font:800 .9rem Inter, ui-sans-serif, system-ui, sans-serif;
+      cursor:pointer;
+      transition:.2s ease;
+      position:relative;
+      top:1px;
+    }
+
+    .tab-etapa:hover{
+      background:#f4f6f8;
+      color:var(--verde);
+    }
+
+    .tab-etapa.activa{
+      background:#fff;
+      color:var(--verde);
+      border-color:var(--verde);
+      box-shadow:inset 0 3px 0 var(--verde);
+    }
+
+    .etapa.oculta{
+      display:none;
+    }
+
+    .etapa.visible{
+      display:block;
+      animation:aparecerEtapa .22s ease;
+    }
+
+    @keyframes aparecerEtapa{
+      from{opacity:0;transform:translateY(5px)}
+      to{opacity:1;transform:translateY(0)}
+    }
+
+    @media(max-width:850px){
+      .tabs-etapas{
+        top:62px;
+      }
+    }
+
+    @media(max-width:560px){
+      .tab-etapa{
+        padding:10px 14px 9px;
+        font-size:.84rem;
+      }
+    }
+
     .etapa{
       background:var(--blanco);
       border:1px solid rgba(16,24,40,.09);
@@ -482,8 +552,16 @@
           </p>
         </div>
 
+
+        <nav class="tabs-etapas" aria-label="Navegación por etapas">
+          <button class="tab-etapa activa" type="button" data-etapa="1" aria-selected="true">Etapa 1</button>
+          <button class="tab-etapa" type="button" data-etapa="2" aria-selected="false">Etapa 2</button>
+          <button class="tab-etapa" type="button" data-etapa="3" aria-selected="false">Etapa 3</button>
+          <button class="tab-etapa" type="button" data-etapa="4" aria-selected="false">Etapa 4</button>
+        </nav>
+
         <div class="etapas">
-          <article class="etapa">
+          <article class="etapa visible" data-etapa-panel="1">
             <div class="etapa-cabecera">
               <span class="estado">Etapa 01</span>
               <h3>Crear el listado base para la práctica</h3>
@@ -523,7 +601,7 @@ Convierte el rango en una Tabla de Excel con filtros y aplica un formato limpio 
             </div>
           </article>
 
-          <article class="etapa">
+          <article class="etapa oculta" data-etapa-panel="2">
             <div class="etapa-cabecera">
               <span class="estado">Etapa 02</span>
               <h3>Resolver el Ejercicio 1 con SI y Y</h3>
@@ -578,7 +656,7 @@ Inserta el diagrama en la hoja de Excel en la celda G2.</pre>
 </div>
           </article>
 
-          <article class="etapa">
+          <article class="etapa oculta" data-etapa-panel="3">
             <div class="etapa-cabecera">
               <span class="estado">Etapa 03</span>
               <h3>Resolver el Ejercicio 2 con SI y O</h3>
@@ -667,7 +745,7 @@ Inserta el diagrama terminado en la hoja de Excel, comenzando en la celda G20. A
             </div>
           </article>
 
-          <article class="etapa">
+          <article class="etapa oculta" data-etapa-panel="4">
             <div class="etapa-cabecera">
               <span class="estado">Etapa 04</span>
               <h3>Comparar y comprender las fórmulas</h3>
@@ -783,6 +861,36 @@ No modifiques los datos ni las fórmulas de la tabla durante la explicación.</p
         }, 1800);
       });
     });
+
+    const tabsEtapas = document.querySelectorAll(".tab-etapa");
+    const panelesEtapas = document.querySelectorAll("[data-etapa-panel]");
+
+    function mostrarEtapa(numero){
+      tabsEtapas.forEach((tab) => {
+        const activa = tab.dataset.etapa === String(numero);
+        tab.classList.toggle("activa", activa);
+        tab.setAttribute("aria-selected", activa ? "true" : "false");
+      });
+
+      panelesEtapas.forEach((panel) => {
+        const visible = panel.dataset.etapaPanel === String(numero);
+        panel.classList.toggle("visible", visible);
+        panel.classList.toggle("oculta", !visible);
+      });
+
+      localStorage.setItem("etapaSeleccionada", String(numero));
+      window.scrollTo({ top: document.querySelector(".tabs-etapas").offsetTop - 76, behavior: "smooth" });
+    }
+
+    tabsEtapas.forEach((tab) => {
+      tab.addEventListener("click", () => mostrarEtapa(tab.dataset.etapa));
+    });
+
+    const etapaGuardada = localStorage.getItem("etapaSeleccionada");
+    if (etapaGuardada && document.querySelector(`[data-etapa-panel="${etapaGuardada}"]`)) {
+      mostrarEtapa(etapaGuardada);
+    }
+
   </script>
 </body>
 </html>
